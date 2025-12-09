@@ -9,6 +9,19 @@ import { Message } from "../types";
 // Initialize the client using the Vite-provided env var.
 const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY || '' });
 
+/**
+ * Send a prompt plus conversation history to the Gemini model and return
+ * the generated text.
+ *
+ * NOTE: This client is initialized on the client side for demo purposes
+ * using `import.meta.env.VITE_GEMINI_API_KEY`. Do NOT expose production
+ * API keys in browser bundles — route requests through a server endpoint
+ * that holds secrets instead.
+ *
+ * @param prompt - The user prompt to send to the model
+ * @param history - Array of prior messages to include as context
+ * @returns The text response from Gemini, or an error message string
+ */
 export const sendMessageToGemini = async (
   prompt: string,
   history: Message[]

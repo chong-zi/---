@@ -96,6 +96,14 @@ const App: React.FC = () => {
   }, [isDragging, handleMouseMove, handleMouseUp]);
 
 
+  /**
+   * Handle sending a user message.
+   * This function appends a user message to local state, shows a loading
+   * indicator, and either simulates an artifact generation or calls the
+   * Gemini service to produce a response.
+   *
+   * @param text - The user's input text
+   */
   const handleSendMessage = async (text: string) => {
     const newUserMessage: Message = {
       id: Date.now().toString(),
