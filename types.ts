@@ -1,3 +1,6 @@
+/// <reference types="vite/client" />
+// Provide Vite client types so `import.meta.env` is correctly typed in TS.
+
 export interface Attachment {
   id: string;
   type: 'chart' | 'code' | 'image';

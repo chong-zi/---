@@ -1,9 +1,13 @@
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { Message } from "../types";
 
-// Initialize the client
-// API Key is assumed to be in process.env.API_KEY
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+// IMPORTANT: This client is initialized in the browser bundle for demo
+// purposes using the Vite-injected `import.meta.env.VITE_GEMINI_API_KEY`.
+// For production, avoid shipping secret API keys to the browser. Instead,
+// proxy requests through a server-side endpoint or use server-hosted
+// credentials.
+// Initialize the client using the Vite-provided env var.
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY || '' });
 
 export const sendMessageToGemini = async (
   prompt: string,
